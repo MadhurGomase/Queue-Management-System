@@ -29,9 +29,17 @@ void addCustomer(int choice){
 
     string strTime = to_string(timeArrival);
 
-    // Bank IFSC = XXXX0123456, here, the last six digits indicate the
+    // Bank IFSC = XXXX0111111, here, the last six digits indicate the
     // bank branch location
 
-    string branchLoc = "123456";
+    string branchLoc = "111111";
+
+    //Token number will be a unique temporary reference for the customer
     c.tokenNum = stoll(branchLoc + strTime);
+
+    cout << c.tokenNum;
+}
+
+int main(){
+    addCustomer(2);
 }
