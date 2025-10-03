@@ -10,12 +10,14 @@ struct Customer{
     long long tokenNum;
 };
 
-void addCustomer(int choice){
+int addCustomer(int choice){
     Customer c;
 
     cout << "Enter name: ";
     getline(cin, c.custName);
     c.taskChoice = choice;
+
+    string strChoice = to_string(choice);
 
     //Fetch system time
     time_t now = time(0);           // get current time
@@ -38,11 +40,11 @@ void addCustomer(int choice){
     //Token number will be a unique 
     //temporary reference for the customer
 
-    c.tokenNum = stoll(branchLoc + strTime);
+    c.tokenNum = stoi(strChoice + strTime);
 
-    cout << c.tokenNum;
+    return c.tokenNum;
 }
     
 int main(){
-    addCustomer(2);
+    cout << addCustomer(2);
 }
