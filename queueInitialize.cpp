@@ -1,64 +1,79 @@
 #include<iostream>
 using namespace std;
 
+class Node{
+    public:
+    int data;
+    Node* next;
+
+    Node(int x){
+        data = x;
+        next = NULL;
+    }
+};
+
 class Queue{
-    int *arr;
-    int size;
-    int front;
-    int rear;
+    Node* front;
+    Node* rear;
 
     public:
     Queue(){
-        size = 20;
-        arr = new int[size];
-        front = 0;
-        rear = 0;
+        front = NULL;
+        rear = NULL;
     }
 
     void enqueue(int x){
-        if(rear != size){
-            arr[rear] = x;
-            rear++;
+        Node* newNode = new Node(x);
+        if (rear == NULL){
+            front = rear = newNode;
         }
-        else cout << "Queue full" << endl;
+        else{
+            rear -> next = newNode;
+            rear = newNode;
+        }
     }
 
     int dequeue(){
-        if(front != rear){
-            int ans = arr[front];
-            front++;
-
-            if (front == rear){
-                front = 0;
-                rear = 0;
-            }
-            return ans;
+        if (front == NULL){
+            cout << "Empty queue";
+            return -1;
         }
-        else return -1;
-    }
+        
+        Node* temp = front;
+        int data = temp -> data;
+        front = front -> next;
 
-    bool isFull(){
-        if (rear == size) return true;
-        else return false;
+        if (front == NULL) rear = NULL;
+
+        delete temp;
+        return data;
     }
 
     bool isEmpty(){
-        if (front == rear) return true;
+        if (front == NULL) return true;
         else return false;
     }
 
     int qSize(){
-        return rear;
+        Node* temp = front;
+        int count = 0;
+        while (temp != NULL){
+            count++;
+            temp = temp -> next;
+        }
+        return count;
     }
 
     int qFront(){
-        if (front != rear) return arr[front];
+        if (front != NULL) return front -> data;
         else return -1;
     }
 
     int qDisplay(){
-        for (int i = front; i <= rear - 1; i++){
-            cout << arr[i] << " ";
+        Node* temp = front;
+        while (temp != NULL){
+            cout << temp -> data << " ";
+            temp = temp -> next;
         }
         cout << endl;
     }
@@ -69,9 +84,9 @@ int main(){
     q.enqueue(1334);
     q.enqueue(1335);
     q.qDisplay();
-    q.qFront();
+    cout << q.qFront() << endl;
     q.dequeue();
-    q.qFront();
+    cout << q.qFront() << endl;
     q.qDisplay();
     cout << q.qSize();
 }
