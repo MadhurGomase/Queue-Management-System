@@ -1,6 +1,10 @@
-#include<iostream>
+#include <iostream>
+#include <string>
+#include <ctime>
 using namespace std;
 
+
+//from queueInitialize.cpp
 class Node{
     public:
     int data;
@@ -78,16 +82,37 @@ class Queue{
         cout << endl;
     }
 };
+//queueInitialize.cpp ends
 
 int main(){
-    Queue q;
-    q.enQueue(1334);
-    q.enQueue(1335);
-    q.qDisplay();
-    cout << q.qFront() << endl;
-    q.deQueue();
-    cout << q.qFront() << endl;
-    q.qDisplay();
-    cout << q.qSize();
-}
 
+    int opt;
+    cout << "########\n";
+    cout << "1. Add to queue\n";
+    cout << "2. Estimate wait time\n";
+    cout << "3. Dequeue\n";
+    cout << "Enter choice: ";
+    cin >> opt;
+
+    Queue accCreate1;
+    Queue accCreate2;
+    Queue passEntry;
+    Queue forEx;
+    Queue otherQuery;
+
+
+    switch(opt) {
+        case 1:
+            int task;
+            cout << "Task choice: \n";
+            cout << "1. Account creation\n";
+            cout << "2. Passbook entry\n";
+            cout << "3. Loan enquiry\n";
+            cout << "4. Foreign exchange\n";
+            cout << "5. Other queries\n";
+            cout << "Enter choice : ";
+            cin >> task;
+
+            
+    }
+}

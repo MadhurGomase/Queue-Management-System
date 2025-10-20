@@ -7,7 +7,7 @@ struct Customer{
     string custName;
     int taskChoice;
     int arrivalTime;
-    long long tokenNum;
+    int tokenNum;
 };
 
 int addCustomer(int choice){
