@@ -141,6 +141,7 @@ int main(){
     Queue accCreate1;
     Queue accCreate2;
     Queue passEntry;
+    Queue loanEnq;
     Queue forEx;
     Queue otherQuery;
 
@@ -158,6 +159,38 @@ int main(){
 
             cin >> task;
 
+            int tokenNum = addCustomer(task);
+
+            switch(task) {
+                case 1:
+                    if (accCreate1.qSize() >= accCreate2.qSize()){
+                        accCreate1.enQueue(tokenNum);
+                        break;
+                    }
+                    else{
+                        accCreate2.enQueue(tokenNum);
+                        break;
+                    }
+
+                case 2:
+                    passEntry.enQueue(tokenNum);
+                    break;
+
+                case 3:
+                    loanEnq.enQueue(tokenNum);
+                    break;
+
+                case 4:
+                    forEx.enQueue(tokenNum);
+                    break;
+
+                case 5:
+                    otherQuery.enQueue(tokenNum);
+                    break;
+                
+                default:
+                    cout << "Enter valid task choice";    
+            }
             
     }
 }
