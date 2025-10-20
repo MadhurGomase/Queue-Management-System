@@ -133,8 +133,9 @@ int main(){
     int opt;
     cout << "########\n";
     cout << "1. Add to queue\n";
-    cout << "2. Estimate wait time\n";
-    cout << "3. Dequeue\n";
+    cout << "2. View queues\n";
+    cout << "3. Estimate wait time\n";
+    cout << "4. Dequeue\n";
     cout << "Enter choice: ";
     cin >> opt;
 
@@ -160,6 +161,7 @@ int main(){
             cin >> task;
 
             int tokenNum = addCustomer(task);
+            cout << "Token number: " << tokenNum << endl;
 
             switch(task) {
                 case 1:
@@ -189,8 +191,16 @@ int main(){
                     break;
                 
                 default:
-                    cout << "Enter valid task choice";    
+                    cout << "Enter valid task choice" << endl;    
             }
-            
+        
+        case 2:
+            cout << "Account creation 1: " << accCreate1.qDisplay() << endl;
+            cout << "Account creation 2: " << accCreate2.qDisplay() << endl;
+            cout << "Passbook entry: " << passEntry.qDisplay() << endl;
+            cout << "Loan enquiry: " << loanEnq.qDisplay() << endl;
+            cout << "Foerign exchange: " << forEx.qDisplay() << endl;
+            cout << "Other queries: " << otherQuery.qDisplay() << endl;
+
     }
 }
