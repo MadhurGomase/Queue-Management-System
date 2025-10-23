@@ -87,7 +87,6 @@ class Queue{
 
 //from addCustomer.cpp
 struct Customer{
-    string custName;
     int taskChoice;
     int arrivalTime;
     int tokenNum;
@@ -96,8 +95,6 @@ struct Customer{
 int addCustomer(int choice){
     Customer c;
 
-    cout << "Enter name: ";
-    getline(cin, c.custName);
     c.taskChoice = choice;
 
     string strChoice = to_string(choice);
@@ -223,18 +220,23 @@ int main(){
                 cout << "Account creation 1: ";
                 accCreate1.qDisplay();
                 cout << endl;
+
                 cout << "Account creation 2: ";
                 accCreate2.qDisplay();
                 cout << endl;
+
                 cout << "Passbook entry: ";
                 passEntry.qDisplay();
                 cout << endl;
+
                 cout << "Loan enquiry: ";
                 loanEnq.qDisplay();
                 cout << endl;
+
                 cout << "Foerign exchange: ";
                 forEx.qDisplay();
                 cout << endl;
+
                 cout << "Other queries: ";
                 otherQuery.qDisplay();
                 cout << endl;

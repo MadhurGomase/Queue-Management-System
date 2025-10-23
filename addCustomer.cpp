@@ -4,7 +4,6 @@
 using namespace std;
 
 struct Customer{
-    string custName;
     int taskChoice;
     int arrivalTime;
     int tokenNum;
@@ -13,8 +12,6 @@ struct Customer{
 int addCustomer(int choice){
     Customer c;
 
-    cout << "Enter name: ";
-    getline(cin, c.custName);
     c.taskChoice = choice;
 
     string strChoice = to_string(choice);
