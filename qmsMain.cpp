@@ -40,7 +40,7 @@ class Queue{
 
     int deQueue(){
         if (front == NULL){
-            cout << "Empty queue";
+            cout << "Empty queue\n";
             return -1;
         }
         
@@ -135,6 +135,8 @@ int main(){
     Queue loanEnq;
     Queue forEx;
     Queue otherQuery;
+
+    Queue* qArr[] = {&accCreate1, &accCreate2, &passEntry, &loanEnq, &forEx, &otherQuery};
     int opt;
 
     while (true){
@@ -219,27 +221,39 @@ int main(){
             {
                 cout << "Account creation 1: ";
                 accCreate1.qDisplay();
-                cout << endl;
 
                 cout << "Account creation 2: ";
                 accCreate2.qDisplay();
-                cout << endl;
 
                 cout << "Passbook entry: ";
                 passEntry.qDisplay();
-                cout << endl;
 
                 cout << "Loan enquiry: ";
                 loanEnq.qDisplay();
-                cout << endl;
 
                 cout << "Foerign exchange: ";
                 forEx.qDisplay();
-                cout << endl;
 
                 cout << "Other queries: ";
                 otherQuery.qDisplay();
-                cout << endl;
+                break;
+            }
+            case 4:
+            {
+                int counter;
+                cout << "Counter to dequeue: ";
+                cin >> counter;
+
+                if (counter >= 1 && counter <= (sizeof(qArr) / sizeof(qArr[0]))){
+                    if(qArr[counter - 1]->qFront() != - 1){
+                        cout << "Dequeued " << qArr[counter - 1]->qFront() << endl;
+                        qArr[counter - 1]->deQueue();
+                    }                   
+                }
+
+                else {
+                    cout << "Invalid counter number";
+                }
                 break;
             }
         }
