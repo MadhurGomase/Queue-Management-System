@@ -130,77 +130,102 @@ int addCustomer(int choice){
 
 int main(){
 
-    int opt;
-    cout << "########\n";
-    cout << "1. Add to queue\n";
-    cout << "2. View queues\n";
-    cout << "3. Estimate wait time\n";
-    cout << "4. Dequeue\n";
-    cout << "Enter choice: ";
-    cin >> opt;
-
     Queue accCreate1;
     Queue accCreate2;
     Queue passEntry;
     Queue loanEnq;
     Queue forEx;
     Queue otherQuery;
+    int opt;
 
+    while (true){
+        cout << "########\n";
+        cout << "1. Add to queue\n";
+        cout << "2. View queues\n";
+        cout << "3. Estimate wait time\n";
+        cout << "4. Dequeue\n";
+        cout << "5. Exit\n";
+        cout << "Enter choice: ";
+        cin >> opt;
 
-    switch(opt) {
-        case 1:
-            int task;
-            cout << "Task choice: \n";
-            cout << "1. Account creation\n";
-            cout << "2. Passbook entry\n";
-            cout << "3. Loan enquiry\n";
-            cout << "4. Foreign exchange\n";
-            cout << "5. Other queries\n";
-            cout << "Enter choice : ";
+        switch(opt) {
+            case 1:
+            {
+                int task;
+                cout << "Task choice: \n";
+                cout << "1. Account creation\n";
+                cout << "2. Passbook entry\n";
+                cout << "3. Loan enquiry\n";
+                cout << "4. Foreign exchange\n";
+                cout << "5. Other queries\n";
+                cout << "Enter choice : ";
 
-            cin >> task;
+                cin >> task;
 
-            int tokenNum = addCustomer(task);
-            cout << "Token number: " << tokenNum << endl;
+                int token = addCustomer(task);
+                cout << "Token number: " << token << endl;
 
-            switch(task) {
-                case 1:
-                    if (accCreate1.qSize() >= accCreate2.qSize()){
-                        accCreate1.enQueue(tokenNum);
+                switch(task) {
+                    case 1:
+                    {
+                        if (accCreate1.qSize() >= accCreate2.qSize()){
+                            accCreate1.enQueue(token);
+                            cout << "Head to counter 1";
+                            break;
+                        }
+                        else{
+                            accCreate2.enQueue(token);
+                            cout << "Head to counter 2";
+                            break;
+                        }
+                    }
+
+                    case 2:
+                    {
+                        passEntry.enQueue(token);
+                        cout << "Head to counter 3";
                         break;
                     }
-                    else{
-                        accCreate2.enQueue(tokenNum);
+
+                    case 3:
+                    {
+                        loanEnq.enQueue(token);
+                        cout << "Head to counter 4";
                         break;
                     }
 
-                case 2:
-                    passEntry.enQueue(tokenNum);
-                    break;
+                    case 4:
+                    {
+                        forEx.enQueue(token);
+                        cout << "Head to counter 5";
+                        break;
+                    }
 
-                case 3:
-                    loanEnq.enQueue(tokenNum);
-                    break;
-
-                case 4:
-                    forEx.enQueue(tokenNum);
-                    break;
-
-                case 5:
-                    otherQuery.enQueue(tokenNum);
-                    break;
-                
-                default:
-                    cout << "Enter valid task choice" << endl;    
+                    case 5:
+                    {
+                        otherQuery.enQueue(token);
+                        cout << "Head to counter 6";
+                        break;
+                    }
+                    
+                    default:
+                    {
+                        cout << "Enter valid task choice" << endl;    
+                    }
+                }
+                break;
             }
-        
-        case 2:
-            cout << "Account creation 1: " << accCreate1.qDisplay() << endl;
-            cout << "Account creation 2: " << accCreate2.qDisplay() << endl;
-            cout << "Passbook entry: " << passEntry.qDisplay() << endl;
-            cout << "Loan enquiry: " << loanEnq.qDisplay() << endl;
-            cout << "Foerign exchange: " << forEx.qDisplay() << endl;
-            cout << "Other queries: " << otherQuery.qDisplay() << endl;
-
+            
+            case 2:
+            {
+                cout << "Account creation 1: " << accCreate1.qDisplay() << endl;
+                cout << "Account creation 2: " << accCreate2.qDisplay() << endl;
+                cout << "Passbook entry: " << passEntry.qDisplay() << endl;
+                cout << "Loan enquiry: " << loanEnq.qDisplay() << endl;
+                cout << "Foerign exchange: " << forEx.qDisplay() << endl;
+                cout << "Other queries: " << otherQuery.qDisplay() << endl;
+                break;
+            }
+        }
     }
 }
