@@ -6,8 +6,8 @@ class Node{
     int data;
     Node* next;
 
-    Node(int x){
-        data = x;
+    Node(){
+        data = 0;
         next = NULL;
     }
 };
@@ -23,7 +23,8 @@ class Queue{
     }
 
     void enQueue(int x){
-        Node* newNode = new Node(x);
+        Node* newNode = new Node();
+        newNode -> data = x;
         if (rear == NULL){
             front = rear = newNode;
         }
@@ -69,7 +70,7 @@ class Queue{
         else return -1;
     }
 
-    int qDisplay(){
+    void qDisplay(){
         Node* temp = front;
         while (temp != NULL){
             cout << temp -> data << " ";
