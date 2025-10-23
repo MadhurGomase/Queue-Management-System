@@ -219,23 +219,28 @@ int main(){
             
             case 2:
             {
-                cout << "Account creation 1: ";
-                accCreate1.qDisplay();
+                // cout << "Account creation 1: ";
+                // accCreate1.qDisplay();
 
-                cout << "Account creation 2: ";
-                accCreate2.qDisplay();
+                // cout << "Account creation 2: ";
+                // accCreate2.qDisplay();
 
-                cout << "Passbook entry: ";
-                passEntry.qDisplay();
+                // cout << "Passbook entry: ";
+                // passEntry.qDisplay();
 
-                cout << "Loan enquiry: ";
-                loanEnq.qDisplay();
+                // cout << "Loan enquiry: ";
+                // loanEnq.qDisplay();
 
-                cout << "Foerign exchange: ";
-                forEx.qDisplay();
+                // cout << "Foreign exchange: ";
+                // forEx.qDisplay();
 
-                cout << "Other queries: ";
-                otherQuery.qDisplay();
+                // cout << "Other queries: ";
+                // otherQuery.qDisplay();
+
+                for (int i = 1; i <= (sizeof(qArr) / sizeof(qArr[0])); i++){
+                    cout << "Counter " << i << ": ";
+                    qArr[i-1]->qDisplay();
+                }
                 break;
             }
             case 4:
