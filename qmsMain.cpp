@@ -148,6 +148,10 @@ int main(){
         cout << "Enter choice: ";
         cin >> opt;
 
+        if (opt == 5){
+            break;
+        }
+
         switch(opt) {
             case 1:
             {
