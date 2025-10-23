@@ -10,8 +10,8 @@ class Node{
     int data;
     Node* next;
 
-    Node(int x){
-        data = x;
+    Node(){
+        data = 0;
         next = NULL;
     }
 };
@@ -27,7 +27,8 @@ class Queue{
     }
 
     void enQueue(int x){
-        Node* newNode = new Node(x);
+        Node* newNode = new Node();
+        newNode -> data = x;
         if (rear == NULL){
             front = rear = newNode;
         }
@@ -73,7 +74,7 @@ class Queue{
         else return -1;
     }
 
-    int qDisplay(){
+    void qDisplay(){
         Node* temp = front;
         while (temp != NULL){
             cout << temp -> data << " ";
@@ -148,10 +149,6 @@ int main(){
         cout << "Enter choice: ";
         cin >> opt;
 
-        if (opt == 5){
-            break;
-        }
-
         switch(opt) {
             case 1:
             {
@@ -172,14 +169,14 @@ int main(){
                 switch(task) {
                     case 1:
                     {
-                        if (accCreate1.qSize() >= accCreate2.qSize()){
+                        if (accCreate1.qSize() <= accCreate2.qSize()){
                             accCreate1.enQueue(token);
-                            cout << "Head to counter 1";
+                            cout << "Head to counter 1\n";
                             break;
                         }
                         else{
                             accCreate2.enQueue(token);
-                            cout << "Head to counter 2";
+                            cout << "Head to counter 2\n";
                             break;
                         }
                     }
@@ -187,34 +184,34 @@ int main(){
                     case 2:
                     {
                         passEntry.enQueue(token);
-                        cout << "Head to counter 3";
+                        cout << "Head to counter 3\n";
                         break;
                     }
 
                     case 3:
                     {
                         loanEnq.enQueue(token);
-                        cout << "Head to counter 4";
+                        cout << "Head to counter 4\n";
                         break;
                     }
 
                     case 4:
                     {
                         forEx.enQueue(token);
-                        cout << "Head to counter 5";
+                        cout << "Head to counter 5\n";
                         break;
                     }
 
                     case 5:
                     {
                         otherQuery.enQueue(token);
-                        cout << "Head to counter 6";
+                        cout << "Head to counter 6\n";
                         break;
                     }
                     
                     default:
                     {
-                        cout << "Enter valid task choice" << endl;    
+                        cout << "Enter valid task choice\n" << endl;    
                     }
                 }
                 break;
@@ -222,14 +219,29 @@ int main(){
             
             case 2:
             {
-                cout << "Account creation 1: " << accCreate1.qDisplay() << endl;
-                cout << "Account creation 2: " << accCreate2.qDisplay() << endl;
-                cout << "Passbook entry: " << passEntry.qDisplay() << endl;
-                cout << "Loan enquiry: " << loanEnq.qDisplay() << endl;
-                cout << "Foerign exchange: " << forEx.qDisplay() << endl;
-                cout << "Other queries: " << otherQuery.qDisplay() << endl;
+                cout << "Account creation 1: ";
+                accCreate1.qDisplay();
+                cout << endl;
+                cout << "Account creation 2: ";
+                accCreate2.qDisplay();
+                cout << endl;
+                cout << "Passbook entry: ";
+                passEntry.qDisplay();
+                cout << endl;
+                cout << "Loan enquiry: ";
+                loanEnq.qDisplay();
+                cout << endl;
+                cout << "Foerign exchange: ";
+                forEx.qDisplay();
+                cout << endl;
+                cout << "Other queries: ";
+                otherQuery.qDisplay();
+                cout << endl;
                 break;
             }
+        }
+        if (opt == 5){
+            break;
         }
     }
 }
