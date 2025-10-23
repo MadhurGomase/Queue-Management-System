@@ -24,9 +24,10 @@ int addCustomer(int choice){
     tm *ltm = localtime(&now);      // convert to local time
 
     int hh = ltm->tm_hour;          // hours (0–23)
-    int mm = ltm->tm_min;           // minutes (0–59)
+    int mm = ltm->tm_min;          // minutes (0–59)
+    int ss = ltm->tm_sec;          // seconds (0-59)
 
-    int timeArrival = hh * 100 + mm;       // combine into HHMM format
+    int timeArrival = hh * 60 * 60 + mm * 60 + ss;       // combinely tell seconds passed
     c.arrivalTime = timeArrival;
 
     string strTime = to_string(timeArrival);
