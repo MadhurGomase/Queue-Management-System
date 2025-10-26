@@ -83,6 +83,21 @@ class Queue{
         cout << endl;
     }
 };
+
+int arrMin(int arr[], int size){
+    int min = 100;
+    for(int i = 0; i <= size - 1; i++){
+        if (arr[i] < min){
+            min = arr[i];
+        }
+    }
+    for(int i = 0; i <= size - 1; i++){
+        if(arr[i] == min){
+            return i;
+            break;
+        }
+    }
+}
 //queueInitialize.cpp ends
 
 //from addCustomer.cpp
@@ -131,12 +146,13 @@ int main(){
 
     Queue accCreate1;
     Queue accCreate2;
+    Queue accCreate3;
     Queue passEntry;
     Queue loanEnq;
     Queue forEx;
     Queue otherQuery;
 
-    Queue* qArr[] = {&accCreate1, &accCreate2, &passEntry, &loanEnq, &forEx, &otherQuery};
+    Queue* qArr[] = {&accCreate1, &accCreate2, &accCreate3, &passEntry, &loanEnq, &forEx, &otherQuery};
     int opt;
 
     while (true){
@@ -169,43 +185,41 @@ int main(){
                 switch(task) {
                     case 1:
                     {
-                        if (accCreate1.qSize() <= accCreate2.qSize()){
-                            accCreate1.enQueue(token);
-                            cout << "Head to counter 1\n";
-                            break;
-                        }
-                        else{
-                            accCreate2.enQueue(token);
-                            cout << "Head to counter 2\n";
-                            break;
-                        }
+                        Queue* qArr[] = {&accCreate1, &accCreate2, &accCreate3};
+                        int qSizeArr[] = {accCreate1.qSize(), accCreate2.qSize(), accCreate3.qSize()};
+                        int arrSize = sizeof(qSizeArr) / sizeof(qSizeArr[0]);
+
+                        int idx = arrMin(qSizeArr, arrSize);
+                        qArr[idx]->enQueue(token);
+                        cout << "Head to counter " << idx + 1 << endl;
+                        break;       
                     }
 
                     case 2:
                     {
                         passEntry.enQueue(token);
-                        cout << "Head to counter 3\n";
+                        cout << "Head to counter " << task + 2 << endl;
                         break;
                     }
 
                     case 3:
                     {
                         loanEnq.enQueue(token);
-                        cout << "Head to counter 4\n";
+                        cout << "Head to counter " << task + 2 << endl;
                         break;
                     }
 
                     case 4:
                     {
                         forEx.enQueue(token);
-                        cout << "Head to counter 5\n";
+                        cout << "Head to counter " << task + 2 << endl;
                         break;
                     }
 
                     case 5:
                     {
                         otherQuery.enQueue(token);
-                        cout << "Head to counter 6\n";
+                        cout << "Head to counter " << task + 2 << endl;
                         break;
                     }
                     
@@ -250,10 +264,15 @@ int main(){
                 cin >> counter;
 
                 if (counter >= 1 && counter <= (sizeof(qArr) / sizeof(qArr[0]))){
+                    if(qArr[counter - 1]->qFront() == - 1){
+                        cout << "Empty Queue" << endl;
+                    }
+                    
                     if(qArr[counter - 1]->qFront() != - 1){
                         cout << "Dequeued " << qArr[counter - 1]->qFront() << endl;
                         qArr[counter - 1]->deQueue();
-                    }                   
+                    }  
+                                     
                 }
 
                 else {
