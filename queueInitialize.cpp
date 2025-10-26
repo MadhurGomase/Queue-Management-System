@@ -80,6 +80,22 @@ class Queue{
     }
 };
 
+int arrMin(int arr[], int size){
+    int min = 100;
+    for(int i = 0; i <= size - 1; i++){
+        if (arr[i] < min){
+            min = arr[i];
+        }
+    }
+    int idx = 0;
+    for(int i = 0; i <= size - 1; i++){
+        if(arr[i] == min){
+            return i;
+            break;
+        }
+    }
+}
+
 int main(){
     Queue q;
     q.enQueue(1334);
@@ -89,6 +105,25 @@ int main(){
     q.deQueue();
     cout << q.qFront() << endl;
     q.qDisplay();
-    cout << q.qSize();
+    cout << q.qSize() << endl;
+
+    Queue q1,q2,q3;
+    q1.enQueue(1);
+    q1.enQueue(2);
+    q1.enQueue(3);
+    q2.enQueue(1);
+    q2.enQueue(2);
+    q3.enQueue(1);
+    q3.enQueue(2);
+    Queue* qArr[] = {&q1, &q2, &q3};
+    int qSizeArr[] = {q1.qSize(), q2.qSize(), q3.qSize()};
+    int arrSize = sizeof(qSizeArr) / sizeof(qSizeArr[0]);
+    qArr[arrMin(qSizeArr, arrSize)]->enQueue(1234);
+    int qSizeArr1[] = {q1.qSize(), q2.qSize(), q3.qSize()};
+    qArr[arrMin(qSizeArr1, arrSize)]->enQueue(1234);
+    q1.qDisplay();
+    q2.qDisplay();
+    q3.qDisplay();
+
 }
 
