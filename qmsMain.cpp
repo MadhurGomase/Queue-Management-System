@@ -257,6 +257,17 @@ int main(){
                 }
                 break;
             }
+
+            case 3:
+            {
+                float avgWait[] = {5, 5, 5, 2, 8, 3.5, 6.5};
+                cout << "Estimated waiting times: " << endl;
+                for (int i = 1; i <= (sizeof(qArr) / sizeof(qArr[0])); i++){
+                    cout << "Counter " << i << ": ";
+                    cout << qArr[i-1]->qSize() * avgWait[i-1] << " minutes\n";
+                }
+                break;
+            }
             case 4:
             {
                 int counter;
