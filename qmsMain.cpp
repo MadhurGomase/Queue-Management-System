@@ -295,30 +295,49 @@ int main(){
             }
             case 5:
             {
-                int counter;
-                cout << "Counter to dequeue: ";
-                cin >> counter;
+                string passwd = "0101";
+                int inPass;
+                cout << "Enter password: ";
+                cin >> inPass;
 
-                if (counter >= 1 && counter <= (sizeof(qArr) / sizeof(qArr[0]))){
-                    if(qArr[counter - 1]->qFront() == - 1){
-                        cout << "Empty Queue" << endl;
+                if(inPass == stoi(passwd)){
+
+                    int counter;
+                    cout << "Counter to dequeue: ";
+                    cin >> counter;
+
+                    if (counter >= 1 && counter <= (sizeof(qArr) / sizeof(qArr[0]))){
+                        if(qArr[counter - 1]->qFront() == - 1){
+                            cout << "Empty Queue" << endl;
+                        }
+                        
+                        if(qArr[counter - 1]->qFront() != - 1){
+                            cout << "Dequeued " << qArr[counter - 1]->qFront() << endl;
+                            qArr[counter - 1]->deQueue();
+                        }  
+                                        
                     }
-                    
-                    if(qArr[counter - 1]->qFront() != - 1){
-                        cout << "Dequeued " << qArr[counter - 1]->qFront() << endl;
-                        qArr[counter - 1]->deQueue();
-                    }  
-                                     
+
+                    else {
+                        cout << "Invalid counter number";
+                    }
                 }
 
-                else {
-                    cout << "Invalid counter number";
+                else{
+                    cout << "Invalid password\n";
+                    break;
                 }
+                break;
+            }
+            default:
+            {
+                cout << "Invalid choice!\n";
                 break;
             }
         }
         if (opt == 6){
             break;
         }
+        cout << endl;
     }
 }
