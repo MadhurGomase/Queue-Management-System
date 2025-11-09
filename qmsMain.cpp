@@ -156,12 +156,13 @@ int main(){
     int opt;
 
     while (true){
-        cout << "########\n";
+        cout << "Queue Management System\n";
         cout << "1. Add to queue\n";
         cout << "2. View queues\n";
         cout << "3. Estimate wait time\n";
-        cout << "4. Dequeue\n";
-        cout << "5. Exit\n";
+        cout << "4. Current Status\n";
+        cout << "5. Dequeue\n";
+        cout << "6. Exit\n";
         cout << "Enter choice: ";
         cin >> opt;
 
@@ -268,7 +269,31 @@ int main(){
                 }
                 break;
             }
+
             case 4:
+            {
+                int counter;
+                float avgWait[] = {5, 5, 5, 2, 8, 3.5, 6.5};
+                cout << "Counter to check status: ";
+                cin >> counter;
+
+                if (counter >= 1 && counter <= (sizeof(qArr) / sizeof(qArr[0]))){
+                    if(qArr[counter - 1]->qFront() == - 1){
+                        cout << "Empty Queue" << endl;
+                    }
+                    
+                    if(qArr[counter - 1]->qFront() != - 1){
+                        cout << "Front: " << qArr[counter - 1]->qFront() << endl;
+                        cout << "Estimated wait time: " << qArr[counter - 1]->qSize() * avgWait[counter - 1] << " minutes" << endl;
+                    }                 
+                }
+
+                else {
+                    cout << "Invalid counter number";
+                }
+                break;
+            }
+            case 5:
             {
                 int counter;
                 cout << "Counter to dequeue: ";
@@ -292,7 +317,7 @@ int main(){
                 break;
             }
         }
-        if (opt == 5){
+        if (opt == 6){
             break;
         }
     }
